@@ -2,8 +2,6 @@ package main.kotlin.org.skrap.skrap4k
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.Test
-import sun.jvm.hotspot.oops.Klass
-import java.io.Serializable
 import org.hamcrest.MatcherAssert.*
 import org.hamcrest.CoreMatchers.`is`
 
@@ -11,6 +9,7 @@ import org.hamcrest.CoreMatchers.`is`
 /**
  * Created by yy_yank on 2016/05/21.
  */
+
 class Skrap4KTest {
     @Test
     fun testJsonToObject() {
