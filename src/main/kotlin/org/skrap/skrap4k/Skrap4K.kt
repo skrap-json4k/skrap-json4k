@@ -11,15 +11,11 @@ import sun.jvm.hotspot.oops.Klass
 /**
  * json文字列をクラスインスタンスに変換
  */
-fun  <T> jsonToObject(jsonString : String, clazz : Class<T>) : T {
-    val mapper = ObjectMapper();
-    return mapper.readValue(jsonString, clazz)
-}
+fun  <T> jsonToObject(jsonString : String, clazz : Class<T>) = ObjectMapper().readValue(jsonString, clazz)
+
 
 /**
  * クラスインスタンスをjson文字列に変換
  */
-fun <T> objectToJson(obj : T) : String {
-    val mapper = ObjectMapper();
-    return mapper.writeValueAsString(obj)
-}
+fun <T> objectToJson(obj : T) = ObjectMapper().writeValueAsString(obj)
+
