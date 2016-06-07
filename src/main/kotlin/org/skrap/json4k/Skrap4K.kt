@@ -2,6 +2,7 @@ package main.kotlin.org.skrap.skrap4k
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import sun.jvm.hotspot.oops.Klass
+import kotlin.reflect.KClass
 
 /**
  * Created by yy_yank on 2016/05/21.
@@ -11,7 +12,7 @@ import sun.jvm.hotspot.oops.Klass
 /**
  * json文字列をクラスインスタンスに変換
  */
-fun  <T> jsonToObject(jsonString : String, clazz : Class<T>) = ObjectMapper().readValue(jsonString, clazz)
+fun  <T : Any> jsonToObject(jsonString : String, clazz : KClass<T>) = ObjectMapper().readValue(jsonString, clazz.java)
 
 
 /**
