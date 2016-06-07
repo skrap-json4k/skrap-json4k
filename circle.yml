@@ -1,4 +1,5 @@
-rtifacts:
+general:
+  artifacts:
     - build/reports
 
 machine:
