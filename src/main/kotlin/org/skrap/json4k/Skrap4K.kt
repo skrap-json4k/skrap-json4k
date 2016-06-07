@@ -1,7 +1,6 @@
 package main.kotlin.org.skrap.skrap4k
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import sun.jvm.hotspot.oops.Klass
 import kotlin.reflect.KClass
 
 /**
