@@ -18,3 +18,9 @@ person.name = "yank"
 person.age = 28
 val json = objectToJson(person)
 ```
+
+
+
+# Licence
+
+Apache License, Version 2.0
