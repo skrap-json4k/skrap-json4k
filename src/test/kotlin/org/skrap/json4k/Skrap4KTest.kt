@@ -30,6 +30,15 @@ class Skrap4KTest {
         val expected = "{\"age\":28,\"name\":\"yank\"}"
         assertThat(json, `is`(expected))
     }
+
+
+    @Test
+    fun testJsonToList() {
+        val json = "[{\"age\":15, \"name\":\"hoge\"}, {\"age\":16, \"name\":\"fuga\"}]";
+        val actual = jsonToList<Person>(json).size
+        val expected = 2
+        assertThat(actual, `is`(expected))
+    }
 }
 
 class Person() {

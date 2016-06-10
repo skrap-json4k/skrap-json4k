@@ -1,5 +1,6 @@
 package main.kotlin.org.skrap.skrap4k
 
+import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import kotlin.reflect.KClass
 
@@ -19,3 +20,7 @@ fun  <T : Any> jsonToObject(jsonString : String, clazz : KClass<T>) = ObjectMapp
  */
 fun <T> objectToJson(obj : T) = ObjectMapper().writeValueAsString(obj)
 
+/**
+ * jsonをListに変換
+ */
+fun <T : Any> jsonToList(json : String) = ObjectMapper().readValue(json, List::class.java)
