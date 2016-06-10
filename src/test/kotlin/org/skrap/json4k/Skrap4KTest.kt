@@ -1,9 +1,10 @@
 package main.kotlin.org.skrap.skrap4k
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import org.junit.Test
-import org.hamcrest.MatcherAssert.*
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonProperty
 import org.hamcrest.CoreMatchers.`is`
+import org.hamcrest.MatcherAssert.assertThat
+import org.junit.Test
 
 
 /**
@@ -31,6 +32,14 @@ class Skrap4KTest {
         assertThat(json, `is`(expected))
     }
 
+    @Test
+    fun testObjectToJson2() {
+        var person = Person2.new(28, "yank")
+        val json = objectToJson(person)
+        val expected = "{\"age\":28,\"name\":\"yank\"}"
+        assertThat(json, `is`(expected))
+    }
+
 
     @Test
     fun testJsonToList() {
@@ -45,3 +54,11 @@ class Person() {
     var age: Int? = null
     var name: String? = null
 }
+
+class Person2(val age : Int, val name : String) {
+    companion object {
+        @JsonCreator
+        fun new(@JsonProperty age: Int, @JsonProperty name: String) = Person2(age, name)
+    }
+}
+
