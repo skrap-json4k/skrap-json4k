@@ -12,15 +12,18 @@ import kotlin.reflect.KClass
 /**
  * json文字列をクラスインスタンスに変換
  */
-fun  <T : Any> jsonToObject(jsonString : String, clazz : KClass<T>) = ObjectMapper().readValue(jsonString, clazz.java)
+fun  <T : Any> jsonToObject(jsonString : String, clazz : KClass<T>) = mapper().readValue(jsonString, clazz.java)
 
 
 /**
  * クラスインスタンスをjson文字列に変換
  */
-fun <T> objectToJson(obj : T) = ObjectMapper().writeValueAsString(obj)
+fun <T> objectToJson(obj : T) = mapper().writeValueAsString(obj)
 
 /**
  * jsonをListに変換
  */
-fun <T : Any> jsonToList(json : String) = ObjectMapper().readValue(json, List::class.java)
+fun <T : Any> jsonToList(json : String) = mapper().readValue(json, List::class.java)
+
+
+fun mapper() = ObjectMapper()
