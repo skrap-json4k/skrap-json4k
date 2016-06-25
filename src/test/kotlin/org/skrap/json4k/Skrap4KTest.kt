@@ -40,6 +40,14 @@ class Skrap4KTest {
         assertThat(json, `is`(expected))
     }
 
+    @Test
+    fun testObjectToJson3() {
+        var person = reflectiveJsonBuilderArg2(Person2::class, 28, "yank")
+        val json = objectToJson(person)
+        val expected = "{\"age\":28,\"name\":\"yank\"}"
+        assertThat(json, `is`(expected))
+    }
+
 
     @Test
     fun testJsonToList() {
