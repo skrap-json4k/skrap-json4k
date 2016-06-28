@@ -21,6 +21,12 @@ fun  <T : Any> jsonToObject(jsonString : String, clazz : KClass<T>) = mapper().r
  */
 fun <T> objectToJson(obj : T) = mapper().writeValueAsString(obj)
 
+
+/**
+ * クラスインスタンスをjsonバイトに変換
+ */
+fun <T> objectToJsonBytes(obj : T) = mapper().writeValueAsBytes(obj)
+
 /**
  * jsonをListに変換
  */

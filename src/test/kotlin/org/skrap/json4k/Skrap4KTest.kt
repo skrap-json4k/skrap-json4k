@@ -33,6 +33,16 @@ class Skrap4KTest {
     }
 
     @Test
+    fun testObjectToJsonBytes() {
+        var person = Person()
+        person.name = "yank"
+        person.age = 28
+        val json = objectToJsonBytes(person)
+        val expected = "{\"age\":28,\"name\":\"yank\"}".toByteArray()
+        assertThat(json, `is`(expected))
+    }
+
+    @Test
     fun testObjectToJson2() {
         var person = Person2.new(28, "yank")
         val json = objectToJson(person)
