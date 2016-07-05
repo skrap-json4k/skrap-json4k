@@ -5,6 +5,7 @@ Kotlin用のjsonライブラリ
 
 ## Usage
 
+* Json to Object
 ```Kotlin
 val json = "{\"age\":28, \"name\":\"yank\"}"
 val hoge = jsonToObject(json, Person::class)
@@ -12,6 +13,7 @@ val (age, name) = hoge.age to hoge.name
 ```
 
 
+* Object to Json
 ```Kotlin 
 val person = Person()
 person.name = "yank"
@@ -19,7 +21,13 @@ person.age = 28
 val json = objectToJson(person)
 ```
 
-
+* JsonCreator
+```Kotlin
+var person = ReflectiveJsonCreator.createArg2(Person2::class, 28, "yank")
+val json = objectToJson(person)
+val expected = "{\"age\":28,\"name\":\"yank\"}"
+assertThat(json, `is`(expected))
+```
 
 # Licence
 
