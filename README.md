@@ -21,6 +21,11 @@ person.age = 28
 val json = objectToJson(person)
 ```
 
+* Json to List
+```Kotlin 
+val json = "[{\"age\":15, \"name\":\"hoge\"}, {\"age\":16, \"name\":\"fuga\"}]";
+val list = jsonToList<Person>(json)
+```
 * JsonCreator
 ```Kotlin
 var person = ReflectiveJsonCreator.createArg2(Person2::class, 28, "yank")
