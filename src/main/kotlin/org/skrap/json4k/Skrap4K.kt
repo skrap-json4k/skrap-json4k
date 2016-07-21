@@ -32,7 +32,9 @@ fun <T> objectToJsonBytes(obj : T) = mapper().writeValueAsBytes(obj)
  */
 fun <T : Any> jsonToList(json : String) = mapper().readValue(json, List::class.java)
 
-
+/**
+ * ObjectMapperインスタンス生成
+ */
 fun mapper() = ObjectMapper()
 
 
