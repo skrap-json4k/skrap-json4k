@@ -3,6 +3,7 @@ package main.kotlin.org.skrap.skrap4k
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializationFeature
 import kotlin.reflect.KClass
 
 /**
@@ -13,29 +14,29 @@ import kotlin.reflect.KClass
 /**
  * json文字列をクラスインスタンスに変換
  */
-fun  <T : Any> jsonToObject(jsonString : String, clazz : KClass<T>) = mapper().readValue(jsonString, clazz.java)
+fun  <T : Any> jsonToObject(jsonString : String, clazz : KClass<T>, pretty : Boolean = false) = mapper(pretty).readValue(jsonString, clazz.java)
 
 
 /**
  * クラスインスタンスをjson文字列に変換
  */
-fun <T> objectToJson(obj : T) = mapper().writeValueAsString(obj)
+fun <T> objectToJson(obj : T, pretty : Boolean = false) = mapper(pretty).writeValueAsString(obj)
 
 
 /**
  * クラスインスタンスをjsonバイトに変換
  */
-fun <T> objectToJsonBytes(obj : T) = mapper().writeValueAsBytes(obj)
+fun <T> objectToJsonBytes(obj : T, pretty : Boolean = false) = mapper(pretty).writeValueAsBytes(obj)
 
 /**
  * jsonをListに変換
  */
-fun <T : Any> jsonToList(json : String) = mapper().readValue(json, List::class.java)
+fun <T : Any> jsonToList(json : String, pretty : Boolean = false) = mapper(pretty).readValue(json, List::class.java)
 
 /**
  * ObjectMapperインスタンス生成
  */
-fun mapper() = ObjectMapper()
+fun mapper(pretty : Boolean) = if(pretty){ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT)} else {ObjectMapper()}
 
 
 class ReflectiveJsonCreator {
