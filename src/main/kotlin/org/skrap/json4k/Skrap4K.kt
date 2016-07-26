@@ -38,7 +38,11 @@ fun <T : Any> jsonToList(json : String, pretty : Boolean = false) = mapper(prett
  */
 fun mapper(pretty : Boolean) = if(pretty){ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT)} else {ObjectMapper()}
 
-
+/**
+ * リフレクションでPOJOのJsonCreator関数を生成する<br/>
+ * Jacksonをwrapしたいから外部に公開したくない意図があるが、<br/>
+ * あまり筋は良くない気がする
+ */
 class ReflectiveJsonCreator {
 
     companion object {
